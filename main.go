@@ -14,17 +14,6 @@ import (
 	"github.com/gokitx/pkgs/limiter"
 )
 
-var (
-	client = http.Client{
-		Transport: &http.Transport{
-			TLSClientConfig: &tls.Config{
-				InsecureSkipVerify: true,
-			},
-		},
-		Timeout: 1000 * time.Millisecond,
-	}
-)
-
 type Scaner struct {
 	Host string
 	c    *http.Client
@@ -50,6 +39,7 @@ func (s *Scaner) probe(port int) bool {
 	if err != nil {
 		return false
 	}
+	// IMPORTANT - enables better HTTP(S) discovery, because many browsers block CORS by default.
 	req.Header.Add("js.fetch:mode", "no-cors")
 
 	resp, err := s.c.Do(req)
