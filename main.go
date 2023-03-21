@@ -105,7 +105,7 @@ func main() {
 	document.Get("body").Call("appendChild", placeHolder)
 
 	s := NewScaner("127.0.0.1", 1000*time.Millisecond)
-	res := s.Scan(8000, 9000)
+	res := s.Scan(1, 65535)
 
 	placeHolder.Set("innerText", "Open Ports:")
 
