@@ -1,8 +1,5 @@
-module portsscan.com/portscan
+module portsscan
 
-go 1.16
+go 1.19
 
-require (
-	github.com/rotisserie/eris v0.5.0 // indirect
-	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
-)
+require github.com/gokitx/pkgs v0.0.2
